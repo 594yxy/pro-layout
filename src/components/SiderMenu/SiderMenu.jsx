@@ -17,7 +17,7 @@ export const SiderMenuProps = {
   collapsed: PropTypes.bool,
   handleCollapse: PropTypes.func,
   menus: PropTypes.array,
-  siderWidth: PropTypes.number.def(256),
+  siderWidth: PropTypes.number.def(220),
   isMobile: PropTypes.bool,
   layout: PropTypes.string.def('inline'),
   fixSiderbar: PropTypes.bool,
