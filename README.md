@@ -5,13 +5,13 @@ English | [简体中文](./README.zh-CN.md)
 ## Usage
 
 ```bash
-npm i @ant-design-vue/pro-layout --save
+npm i @ant-design-vue/pro-ant-layout --save
 // or
-yarn add @ant-design-vue/pro-layout
+yarn add @ant-design-vue/pro-ant-layout
 ```
 
 ```jsx
-import ProLayout from '@ant-design-vue/pro-layout'
+import ProLayout from '@ant-design-vue/pro-ant-layout'
 
 // by jsx
 export default {
