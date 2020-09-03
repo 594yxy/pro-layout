@@ -51,7 +51,7 @@ export default {
                 value={contentWidth}
                 size="small"
                 onSelect={(value) => handleChange('contentWidth', value)}
-                style={{ width: '80px' }}
+                style={{ width: '70px' }}
                 >
                 {layout === 'sidemenu' ? null : (
                   <Select.Option value="Fixed">
