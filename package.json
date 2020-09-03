@@ -1,5 +1,5 @@
 {
-  "name": "pro-ant-layout",
+  "name": "@ant-design-vue/pro-ant-layout",
   "version": "1.0.5",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -87,6 +87,7 @@
   "homepage": "https://github.com/vueComponent/pro-layout#readme",
   "directories": {
     "example": "examples",
+    "lib": "lib",
     "test": "test"
   },
   "keywords": [
