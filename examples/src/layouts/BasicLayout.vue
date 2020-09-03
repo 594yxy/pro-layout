@@ -25,32 +25,29 @@
       <div>headerContentRender</div>
     </template>
     <template v-slot:rightContentRender>
-      <div :class="['ant-pro-global-header-index-right', settings.layout === 'topmenu' && `ant-pro-global-header-index-${settings.theme}`]">
-        rightContentRender
-      </div>
+      <div
+        :class="['ant-pro-global-header-index-right', settings.layout === 'topmenu' && `ant-pro-global-header-index-${settings.theme}`]"
+      >rightContentRender</div>
     </template>
     <template v-slot:footerRender>
       <div>footerRender</div>
     </template>
-    <setting-drawer
-      :settings="settings"
-      @change="handleSettingChange"
-    />
+    <setting-drawer :settings="settings" @change="handleSettingChange" />
     <router-view />
   </pro-layout>
 </template>
 
 <script>
-import { asyncRouterMap } from '../config/router.config'
-import { i18nRender } from '../locales'
+import { asyncRouterMap } from '../config/router.config';
+import { i18nRender } from '../locales';
 
-import defaultSettings from '@/config/defaultSettings'
-import LogoSvg from '../assets/logo.svg?inline'
-import { CONTENT_WIDTH_TYPE } from '@/store/mutation-types'
+import defaultSettings from '@/config/defaultSettings';
+import LogoSvg from '../assets/logo.svg?inline';
+import { CONTENT_WIDTH_TYPE } from '@/store/mutation-types';
 
 export default {
   name: 'BasicLayout',
-  data () {
+  data() {
     return {
       // base
       menus: [],
@@ -63,7 +60,7 @@ export default {
       // 布局类型
       layout: 'sidemenu', // 'sidemenu', 'topmenu'
       // 定宽: true / 流式: false
-      contentWidth: 'Fluid', // layout of content: `Fluid` or `Fixed`, only works when layout is topmenu
+      contentWidth: false, // layout of content: `Fluid` or `Fixed`, only works when layout is topmenu
       // 主题 'dark' | 'light'
       theme: 'dark',
       // 是否手机模式
@@ -82,56 +79,56 @@ export default {
         colorWeak: defaultSettings.colorWeak,
 
         hideHintAlert: false,
-        hideCopyButton: false
-      }
-    }
+        hideCopyButton: false,
+      },
+    };
   },
-  created () {
-    this.menus = asyncRouterMap.find(item => item.path === '/').children
+  created() {
+    this.menus = asyncRouterMap.find(item => item.path === '/').children;
   },
   methods: {
     i18nRender,
-    handleMediaQuery (val) {
-      this.query = val
+    handleMediaQuery(val) {
+      this.query = val;
       if (this.isMobile && !val['screen-xs']) {
-        this.isMobile = false
-        return
+        this.isMobile = false;
+        return;
       }
       if (!this.isMobile && val['screen-xs']) {
-        this.isMobile = true
-        this.collapsed = false
+        this.isMobile = true;
+        this.collapsed = false;
       }
     },
-    handleCollapse (val) {
-      this.collapsed = val
+    handleCollapse(val) {
+      this.collapsed = val;
     },
-    handleSettingChange ({ type, value }) {
-      console.log('type', type, value)
-      type && (this.settings[type] = value)
+    handleSettingChange({ type, value }) {
+      console.log('type', type, value);
+      type && (this.settings[type] = value);
       switch (type) {
         case 'contentWidth':
-          this.settings[type] = value
-          break
+          this.settings[type] = value;
+          break;
         case 'layout':
           if (value === 'sidemenu') {
-            this.settings.contentWidth = CONTENT_WIDTH_TYPE.Fluid
+            this.settings.contentWidth = CONTENT_WIDTH_TYPE.Fluid;
           } else {
-            this.settings.fixSiderbar = false
-            this.settings.contentWidth = CONTENT_WIDTH_TYPE.Fixed
+            this.settings.fixSiderbar = false;
+            this.settings.contentWidth = CONTENT_WIDTH_TYPE.Fixed;
           }
-          break
+          break;
       }
     },
-    logoRender () {
-      return <LogoSvg />
+    logoRender() {
+      return <LogoSvg />;
     },
-    footerRender () {
-      return <div>custom footer</div>
-    }
-  }
-}
+    footerRender() {
+      return <div>custom footer</div>;
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>
-@import "BasicLayout.less";
+@import 'BasicLayout.less';
 </style>
